@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[Your Name] — Graphic &amp; Textile Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<svg class="grain" width="100%" height="100%">
+  <filter id="noiseFilter">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+  </filter>
+  <rect width="100%" height="100%" filter="url(#noiseFilter)"/>
+</svg>
+
+<svg width="0" height="0">
+  <filter id="organicBlur">
+    <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" result="turb"/>
+    <feDisplacementMap in="SourceGraphic" in2="turb" scale="18"/>
+  </filter>
+</svg>
+
+<header class="site-header">
+  <a href="index.html" class="logo">Your <span>Name</span></a>
+  <button class="menu-trigger" id="menuTrigger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+  </button>
+</header>
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<nav class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-top">
+    <p class="eyebrow">menu</p>
+    <button class="drawer-close" id="drawerClose">close ×</button>
+  </div>
+
+  <ul class="drawer-nav">
+    <li><a class="drawer-link current" href="index.html"><span class="n">01</span>Home</a></li>
+    <li><a class="drawer-link" href="about.html"><span class="n">02</span>About</a></li>
+    <li><a class="drawer-link" href="portfolio.html"><span class="n">03</span>Portfolio</a></li>
+    <li>
+      <a class="drawer-link" href="clothing.html"><span class="n">04</span>Clothing</a>
+      <ul class="drawer-sub">
+        <li><a class="" href="clothing-active.html">— Active</a></li>
+        <li><a class="" href="clothing-inactive.html">— Inactive</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <div class="drawer-foot">
+    <p class="eyebrow">get in touch</p>
+    <div class="links">
+      <a href="#">Instagram</a>
+      <a href="#">Telegram</a>
+      <a href="mailto:hello@example.com">Email</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="pulse-field">
+    <div class="ring"></div>
+    <div class="ring r2"></div>
+    <div class="ring r3"></div>
+  </div>
+
+  <div class="hero-inner">
+    <p class="greeting">hi, this is</p>
+    <h1>[ Your&nbsp;Name ]</h1>
+    <p class="role">Graphic &amp; textile designer.</p>
+
+    <div class="entry-links">
+      <a class="entry-link" href="portfolio.html">
+        <span class="label">
+          <span class="n">01</span>
+          <span>
+            <h2>Portfolio</h2>
+            <span class="desc">Graphic design — services &amp; work</span>
+          </span>
+        </span>
+        <span class="arrow">&rarr;</span>
+      </a>
+      <a class="entry-link" href="clothing.html">
+        <span class="label">
+          <span class="n">02</span>
+          <span>
+            <h2>Clothing</h2>
+            <span class="desc">Made to order, in stock, and archive</span>
+          </span>
+        </span>
+        <span class="arrow">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="eyebrow">get in touch</p>
+  <div class="links">
+    <a href="#">Instagram</a>
+    <a href="#">Telegram</a>
+    <a href="mailto:hello@example.com">Email</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
