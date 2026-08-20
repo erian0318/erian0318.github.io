@@ -399,3 +399,36 @@ footer .links a:hover{ color:var(--blood); }
 @media (prefers-reduced-motion: reduce){
   *{ animation:none !important; transition:none !important; }
 }
+/* Кнопка "Назад" */
+.back-button {
+  position: fixed;
+  top: 72px;
+  left: 16px;
+  z-index: 900;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--blood);
+  background: rgba(11, 7, 5, 0.7);
+  backdrop-filter: blur(6px);
+  color: var(--bone);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.back-button:hover {
+  border-color: var(--blood);
+  box-shadow: 0 0 12px var(--blood-dim);
+  color: var(--flesh);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .back-button {
+    transition: none;
+  }
+}
