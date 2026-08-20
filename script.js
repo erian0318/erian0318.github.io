@@ -29,3 +29,28 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
 });
+// Кнопка "Назад" — на всех страницах, кроме главной
+(function () {
+  const isHome = document.body.contains(document.querySelector('a[href="index.html"].logo'))
+    ? location.pathname.endsWith('index.html') || location.pathname === '/' || location.pathname.endsWith('/')
+    : location.pathname.endsWith('index.html') || location.pathname === '/' || location.pathname.endsWith('/');
+
+  if (isHome) return;
+
+  const btn = document.createElement('a');
+  btn.href = '#';
+  btn.className = 'back-button';
+  btn.setAttribute('aria-label', 'Вернуться назад');
+  btn.textContent = '← Назад';
+
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      window.location.href = 'index.html';
+    }
+  });
+
+  document.body.appendChild(btn);
+})();
