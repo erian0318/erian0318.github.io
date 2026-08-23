@@ -1,0 +1,79 @@
+[
+  {
+    "id": "item-0001",
+    "title": "Raw Silk Wrap Top",
+    "description": "Hand-cut wrap top in raw silk, finished with a single exposed seam along the spine. Falls loose through the body, cinches at the waist.",
+    "material": "100% raw silk",
+    "price": "2400 UAH",
+    "type": "made-to-order",
+    "size": "",
+    "images": [
+      "images/clothing/item-0001-1.jpg",
+      "images/clothing/item-0001-2.jpg"
+    ],
+    "pinned": true,
+    "status": "active",
+    "dateAdded": "2026-08-20"
+  },
+  {
+    "id": "item-0002",
+    "title": "Bone Linen Trousers",
+    "description": "Wide-leg trousers in heavyweight linen, dyed to a warm bone tone. High waist, deep pockets, no lining.",
+    "material": "Heavyweight linen",
+    "price": "1900 UAH",
+    "type": "in-stock",
+    "size": "M",
+    "images": [
+      "images/clothing/item-0002-1.jpg",
+      "images/clothing/item-0002-2.jpg",
+      "images/clothing/item-0002-3.jpg"
+    ],
+    "pinned": true,
+    "status": "active",
+    "dateAdded": "2026-08-18"
+  },
+  {
+    "id": "item-0003",
+    "title": "Sinew Slip Dress",
+    "description": "Bias-cut slip dress with hand-stitched straps. Sits close through the hip, moves with the body.",
+    "material": "Silk-cotton blend",
+    "price": "2100 UAH",
+    "type": "made-to-order",
+    "size": "",
+    "images": [
+      "images/clothing/item-0003-1.jpg",
+      "images/clothing/item-0003-2.jpg"
+    ],
+    "pinned": false,
+    "status": "active",
+    "dateAdded": "2026-08-15"
+  },
+  {
+    "id": "item-0101",
+    "title": "Plum Wool Coat",
+    "description": "Structured mid-length coat in plum wool, single button closure, dropped shoulder. Originally made and sold — can be recreated to your own measurements.",
+    "material": "Wool blend",
+    "price": "3600 UAH",
+    "images": [
+      "images/clothing/item-0101-1.jpg",
+      "images/clothing/item-0101-2.jpg"
+    ],
+    "pinned": true,
+    "status": "inactive",
+    "dateAdded": "2026-07-02"
+  },
+  {
+    "id": "item-0102",
+    "title": "Marrow Silk Blouse",
+    "description": "Loose blouse in bone-toned silk with a single hand-rolled hem. Originally made and sold — can be recreated to your own measurements.",
+    "material": "100% silk",
+    "price": "1800 UAH",
+    "images": [
+      "images/clothing/item-0102-1.jpg",
+      "images/clothing/item-0102-2.jpg"
+    ],
+    "pinned": false,
+    "status": "inactive",
+    "dateAdded": "2026-06-10"
+  }
+]

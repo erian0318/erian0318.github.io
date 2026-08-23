@@ -1,9 +1,5 @@
 // ============================================================
-// CLOTHING — ACTIVE PAGE
-// Reads clothing-data.json and renders:
-//   1. Pinned grid (items with "pinned": true)
-//   2. Arrow-scroll carousel (all active items, newest first)
-//   3. Modal with swipeable multi-photo carousel + description + price
+// CLOTHING — INACTIVE PAGE (custom recreation on request)
 // ============================================================
 
 (function () {
@@ -11,37 +7,24 @@
   const CONTACT_TELEGRAM = "https://t.me/Chstorepl";
   const CONTACT_EMAIL = "https://mail.google.com/mail/?view=cm&fs=1&to=dyzainbych@gmail.com";
 
-  const pinnedRoot = document.getElementById("pinned-grid");
-  const carouselTrack = document.getElementById("carousel-track");
-  const carouselPrev = document.getElementById("carousel-prev");
-  const carouselNext = document.getElementById("carousel-next");
+  const gridRoot = document.getElementById("inactive-grid");
   const modalRoot = document.getElementById("item-modal-root");
 
-  if (!pinnedRoot || !carouselTrack || !modalRoot) return;
+  if (!gridRoot || !modalRoot) return;
 
   fetch("clothing-data.json")
     .then((res) => res.json())
     .then((items) => {
-      const active = items.filter((i) => i.status === "active");
-      const pinned = active.filter((i) => i.pinned);
-      const sorted = [...active].sort(
-        (a, b) => new Date(b.dateAdded) - new Date(a.dateAdded)
-      );
-
-      renderPinned(pinned);
-      renderCarousel(sorted);
-      setupCarouselArrows();
-      setupModal(active);
+      const inactive = items
+        .filter((i) => i.status === "inactive")
+        .sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+      renderGrid(inactive);
+      setupModal(inactive);
     })
     .catch((err) => {
       console.error("Could not load clothing data:", err);
-      pinnedRoot.innerHTML =
-        '<p class="data-error">Could not load items right now.</p>';
+      gridRoot.innerHTML = '<p class="data-error">Could not load items right now.</p>';
     });
-
-  function badgeLabel(item) {
-    return item.type === "in-stock" ? "In stock" : "Made to order";
-  }
 
   function cardMarkup(item) {
     const img = item.images && item.images[0] ? item.images[0] : "";
@@ -50,34 +33,16 @@
         <span class="item-card-photo" style="background-image:url('${img}')"></span>
         <span class="item-card-meta">
           <span class="item-card-title">${item.title}</span>
-          <span class="item-card-badge item-card-badge--${item.type}">${badgeLabel(
-      item
-    )}</span>
+          <span class="item-card-badge item-card-badge--custom">On request</span>
         </span>
       </button>
     `;
   }
 
-  function renderPinned(pinned) {
-    pinnedRoot.innerHTML = pinned.length ? pinned.map(cardMarkup).join("") : "";
+  function renderGrid(items) {
+    gridRoot.innerHTML = items.map(cardMarkup).join("");
   }
 
-  function renderCarousel(items) {
-    carouselTrack.innerHTML = items.map(cardMarkup).join("");
-  }
-
-  function setupCarouselArrows() {
-    if (!carouselPrev || !carouselNext) return;
-    const scrollAmount = 320;
-    carouselPrev.addEventListener("click", () => {
-      carouselTrack.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-    });
-    carouselNext.addEventListener("click", () => {
-      carouselTrack.scrollBy({ left: scrollAmount, behavior: "smooth" });
-    });
-  }
-
-  // ---- Modal with photo carousel ----
   function setupModal(items) {
     const byId = Object.fromEntries(items.map((i) => [i.id, i]));
     let currentImages = [];
@@ -114,11 +79,6 @@
       currentImages = item.images && item.images.length ? item.images : [""];
       currentIndex = 0;
 
-      const sizeRow =
-        item.type === "in-stock"
-          ? `<div class="modal-row"><span class="modal-label">Size</span><span>${item.size}</span></div>`
-          : "";
-
       modalRoot.innerHTML = `
         <div class="modal-overlay" data-modal-close></div>
         <div class="modal-panel" role="dialog" aria-modal="true" aria-label="${item.title}">
@@ -136,14 +96,12 @@
           </div>
 
           <div class="modal-body">
-            <span class="item-card-badge item-card-badge--${item.type}">${badgeLabel(
-        item
-      )}</span>
+            <span class="item-card-badge item-card-badge--custom">On request</span>
             <h2 class="modal-title">${item.title}</h2>
             <p class="modal-desc">${item.description}</p>
             <div class="modal-row"><span class="modal-label">Material</span><span>${item.material}</span></div>
-            ${sizeRow}
-            <div class="modal-row modal-row--price"><span class="modal-label">Price</span><span>${item.price}</span></div>
+            <div class="modal-row modal-row--price"><span class="modal-label">Reference price</span><span>${item.price}</span></div>
+            <p class="modal-note">Final price depends on your measurements and the order.</p>
             <div class="modal-cta">
               <a href="${CONTACT_EMAIL}" target="_blank" rel="noopener">Email</a>
               <a href="${CONTACT_INSTAGRAM}" target="_blank" rel="noopener">Instagram</a>
@@ -176,10 +134,7 @@
       const dotsEl = document.getElementById("modal-photo-dots");
       if (!dotsEl) return;
       dotsEl.innerHTML = currentImages
-        .map(
-          (_, i) =>
-            `<span class="modal-photo-dot" data-photo-dot="${i}"></span>`
-        )
+        .map((_, i) => `<span class="modal-photo-dot" data-photo-dot="${i}"></span>`)
         .join("");
     }
 
@@ -187,14 +142,10 @@
       const total = currentImages.length;
       currentIndex = ((index % total) + total) % total;
       const photoEl = document.getElementById("modal-photo");
-      if (photoEl) {
-        photoEl.style.backgroundImage = `url('${currentImages[currentIndex]}')`;
-      }
+      if (photoEl) photoEl.style.backgroundImage = `url('${currentImages[currentIndex]}')`;
       const dotsEl = document.getElementById("modal-photo-dots");
       if (dotsEl) {
-        [...dotsEl.children].forEach((dot, i) => {
-          dot.classList.toggle("is-active", i === currentIndex);
-        });
+        [...dotsEl.children].forEach((dot, i) => dot.classList.toggle("is-active", i === currentIndex));
       }
     }
 
