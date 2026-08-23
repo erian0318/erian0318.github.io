@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
 });
-// Кнопка "Назад" — на всех страницах, кроме главной
+// Кнопка "back" — на всех страницах, кроме главной
 (function () {
   const isHome = document.body.contains(document.querySelector('a[href="index.html"].logo'))
     ? location.pathname.endsWith('index.html') || location.pathname === '/' || location.pathname.endsWith('/')
@@ -40,8 +40,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const btn = document.createElement('a');
   btn.href = '#';
   btn.className = 'back-button';
-  btn.setAttribute('aria-label', 'Вернуться назад');
-  btn.textContent = '← Назад';
+  btn.setAttribute('aria-label', 'Вернуться back');
+  btn.textContent = '← back';
 
   btn.addEventListener('click', function (e) {
     e.preventDefault();

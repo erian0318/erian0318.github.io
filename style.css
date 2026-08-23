@@ -401,7 +401,7 @@ footer .links a:hover{ color:var(--teal); }
 @media (prefers-reduced-motion: reduce){
   *{ animation:none !important; transition:none !important; }
 }
-/* Кнопка "Назад" */
+/* Кнопка "back" */
 .back-button {
   position: fixed;
   top: 72px;
