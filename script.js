@@ -31,9 +31,27 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 // Кнопка "back" — на всех страницах, кроме главной
 (function () {
-  const isHome = document.body.contains(document.querySelector('a[href="index.html"].logo'))
-    ? location.pathname.endsWith('index.html') || location.pathname === '/' || location.pathname.endsWith('/')
-    : location.pathname.endsWith('index.html') || location.pathname === '/' || location.pathname.endsWith('/');
+  (function () {
+  const isHome = location.pathname === '/' || location.pathname.endsWith('index.html');
+  if (isHome) return;
+
+  const btn = document.createElement('a');
+  btn.href = '#';
+  btn.className = 'back-button';
+  btn.setAttribute('aria-label', 'Вернуться back');
+  btn.textContent = '← back';
+
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      window.location.href = 'index.html';
+    }
+  });
+
+  document.body.appendChild(btn);
+})();
 
   if (isHome) return;
 
