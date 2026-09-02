@@ -484,8 +484,14 @@ footer .links a:hover{ color:var(--teal); }
 .carousel-track::-webkit-scrollbar { display: none; }
 
 .carousel-track .item-card {
-  flex: 0 0 260px;
+  flex: 0 0 200px;
   scroll-snap-align: start;
+}
+
+@media (min-width: 768px) {
+  .carousel-track .item-card {
+    flex: 0 0 260px;
+  }
 }
 
 .carousel-arrow {
