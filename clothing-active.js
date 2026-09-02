@@ -1,9 +1,5 @@
 // ============================================================
 // CLOTHING — ACTIVE PAGE
-// Reads clothing-data.json and renders:
-//   1. Pinned grid (items with "pinned": true)
-//   2. Arrow-scroll carousel (all active items, newest first)
-//   3. Modal with swipeable multi-photo carousel + description + price
 // ============================================================
 
 (function () {
@@ -31,12 +27,12 @@
       renderPinned(pinned);
       renderCarousel(sorted);
       setupCarouselArrows();
+      setupSwipe();
       setupModal(active);
     })
     .catch((err) => {
       console.error("Could not load clothing data:", err);
-      pinnedRoot.innerHTML =
-        '<p class="data-error">Could not load items right now.</p>';
+      pinnedRoot.innerHTML = '<p class="data-error">Could not load items right now.</p>';
     });
 
   function badgeLabel(item) {
@@ -50,9 +46,7 @@
         <span class="item-card-photo" style="background-image:url('${img}')"></span>
         <span class="item-card-meta">
           <span class="item-card-title">${item.title}</span>
-          <span class="item-card-badge item-card-badge--${item.type}">${badgeLabel(
-      item
-    )}</span>
+          <span class="item-card-badge item-card-badge--${item.type}">${badgeLabel(item)}</span>
         </span>
       </button>
     `;
@@ -68,12 +62,33 @@
 
   function setupCarouselArrows() {
     if (!carouselPrev || !carouselNext) return;
-    const scrollAmount = 320;
+    const scrollAmount = 260;
     carouselPrev.addEventListener("click", () => {
       carouselTrack.scrollBy({ left: -scrollAmount, behavior: "smooth" });
     });
     carouselNext.addEventListener("click", () => {
       carouselTrack.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    });
+  }
+
+  // Добавление свайпов для карусели
+  function setupSwipe() {
+    let touchStartX = null;
+    
+    carouselTrack.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+    });
+    
+    carouselTrack.addEventListener('touchend', (e) => {
+      if (touchStartX === null) return;
+      const delta = e.changedTouches[0].clientX - touchStartX;
+      const scrollAmount = 260;
+      if (delta > 40) {
+        carouselTrack.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else if (delta < -40) {
+        carouselTrack.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+      touchStartX = null;
     });
   }
 
@@ -114,8 +129,7 @@
       currentImages = item.images && item.images.length ? item.images : [""];
       currentIndex = 0;
 
-      const sizeRow =
-        item.type === "in-stock"
+      const sizeRow = item.type === "in-stock"
           ? `<div class="modal-row"><span class="modal-label">Size</span><span>${item.size}</span></div>`
           : "";
 
@@ -136,9 +150,7 @@
           </div>
 
           <div class="modal-body">
-            <span class="item-card-badge item-card-badge--${item.type}">${badgeLabel(
-        item
-      )}</span>
+            <span class="item-card-badge item-card-badge--${item.type}">${badgeLabel(item)}</span>
             <h2 class="modal-title">${item.title}</h2>
             <p class="modal-desc">${item.description}</p>
             <div class="modal-row"><span class="modal-label">Material</span><span>${item.material}</span></div>
@@ -176,10 +188,7 @@
       const dotsEl = document.getElementById("modal-photo-dots");
       if (!dotsEl) return;
       dotsEl.innerHTML = currentImages
-        .map(
-          (_, i) =>
-            `<span class="modal-photo-dot" data-photo-dot="${i}"></span>`
-        )
+        .map((_, i) => `<span class="modal-photo-dot" data-photo-dot="${i}"></span>`)
         .join("");
     }
 
