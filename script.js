@@ -29,30 +29,10 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
 });
+
 // Кнопка "back" — на всех страницах, кроме главной
 (function () {
-  (function () {
   const isHome = location.pathname === '/' || location.pathname.endsWith('index.html');
-  if (isHome) return;
-
-  const btn = document.createElement('a');
-  btn.href = '#';
-  btn.className = 'back-button';
-  btn.setAttribute('aria-label', 'Вернуться back');
-  btn.textContent = '← back';
-
-  btn.addEventListener('click', function (e) {
-    e.preventDefault();
-    if (window.history.length > 1) {
-      window.history.back();
-    } else {
-      window.location.href = 'index.html';
-    }
-  });
-
-  document.body.appendChild(btn);
-})();
-
   if (isHome) return;
 
   const btn = document.createElement('a');
