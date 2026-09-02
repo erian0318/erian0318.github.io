@@ -751,3 +751,27 @@ footer .links a:hover{ color:var(--teal); }
   .carousel-track { scroll-behavior: auto; }
   .item-card-photo, .modal-photo { transition: none; }
 }
+
+/* ============================================================
+   PORTFOLIO — grid and modal styles
+   ============================================================ */
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.portfolio-grid .item-card-badge {
+  max-width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (min-width: 768px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+}
