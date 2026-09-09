@@ -61,14 +61,11 @@ const portfolioItems = [
     description: "A functional key holder designed for efficiency and style. The modular design allows for easy wall mounting and organization.",
     tools: "Autodesk Fusion 360",
     year: "2026",
-    images: [
+        images: [
       "images/portfolio/port-key-holder-1.jpg",
       "images/portfolio/port-key-holder-2.jpg",
       "images/portfolio/port-key-holder-3.jpg",
-      "images/portfolio/port-key-holder-4.jpg",
-      "images/portfolio/port-key-holder-5.jpg",
-      "images/portfolio/port-key-holder-6.jpg",
-      "images/portfolio/port-key-holder-7.jpg"
+      "images/portfolio/port-key-holder-4.jpg"
     ]
   },
   {
@@ -78,14 +75,9 @@ const portfolioItems = [
     description: "A modular desk organizer designed to keep workspace clutter-free. The system allows for flexible configurations.",
     tools: "Autodesk Fusion 360",
     year: "2026",
-    images: [
+        images: [
       "images/portfolio/modular-organizer-1.jpg",
-      "images/portfolio/modular-organizer-2.jpg",
-      "images/portfolio/modular-organizer-3.jpg",
-      "images/portfolio/modular-organizer-4.jpg",
-      "images/portfolio/modular-organizer-5.jpg",
-      "images/portfolio/modular-organizer-6.jpg",
-      "images/portfolio/modular-organizer-7.jpg"
+      "images/portfolio/modular-organizer-2.jpg"
     ]
   },
   {
@@ -95,10 +87,11 @@ const portfolioItems = [
     description: "A set of dinner plates inspired by the Arctic landscape. The design features clean lines and a cool color palette.",
     tools: "Autodesk Fusion 360",
     year: "2026",
-    images: [
+     images: [
       "images/portfolio/arctic-plate-set-1.jpg",
       "images/portfolio/arctic-plate-set-2.jpg",
-      "images/portfolio/arctic-plate-set-3.jpg"
+      "images/portfolio/arctic-plate-set-3.jpg",
+      "images/portfolio/arctic-plate-set-4.jpg"
     ]
   },
   {
@@ -112,4 +105,4 @@ const portfolioItems = [
       "images/portfolio/gill-sans-study.pdf"
     ]
   }
-];
+  }\n];
