@@ -102,7 +102,22 @@ const portfolioItems = [
     tools: "Adobe InDesign",
     year: "2026",
     images: [
-      "images/portfolio/gill-sans-study.pdf"
+      "images/portfolio/gill-sans-study-1.jpg",
+      "images/portfolio/gill-sans-study-2.jpg",
+      "images/portfolio/gill-sans-study-3.jpg",
+      "images/portfolio/gill-sans-study-4.jpg",
+      "images/portfolio/gill-sans-study-5.jpg",
+      "images/portfolio/gill-sans-study-6.jpg",
+      "images/portfolio/gill-sans-study-7.jpg",
+      "images/portfolio/gill-sans-study-8.jpg",
+      "images/portfolio/gill-sans-study-9.jpg",
+      "images/portfolio/gill-sans-study-10.jpg",
+      "images/portfolio/gill-sans-study-11.jpg",
+      "images/portfolio/gill-sans-study-12.jpg",
+      "images/portfolio/gill-sans-study-13.jpg",
+      "images/portfolio/gill-sans-study-14.jpg",
+      "images/portfolio/gill-sans-study-15.jpg",
+      "images/portfolio/gill-sans-study-16.jpg"
     ]
   }
   }\n];
