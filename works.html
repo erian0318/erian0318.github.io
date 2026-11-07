@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Works — Erian</title>
+<style>
+@font-face{font-family:"Plex";src:url(fonts/ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:"Fell";src:url(fonts/im-fell-english-latin-400-normal.woff2) format("woff2");font-display:swap}
+*{box-sizing:border-box;margin:0}
+body{min-height:100vh;background:#0E0F10 url(assets/table.jpg) center/cover fixed;color:#CFCBC0;font-family:Plex,monospace;
+  display:grid;place-items:center;text-align:center;padding:24px}
+body::before{content:"";position:fixed;inset:0;background:rgba(5,6,6,.82)}
+main{position:relative}
+h1{font:400 clamp(34px,7vw,64px)/1.1 Fell,Georgia,serif;letter-spacing:.08em;color:#E2561C;text-shadow:0 0 18px rgba(226,86,28,.4)}
+p{margin:18px 0 32px;font-size:13px;letter-spacing:.12em;color:#7C7E7A}
+a{color:#CFCBC0;font-size:13px;letter-spacing:.12em;text-decoration:none;border-bottom:1px solid #7C7E7A;padding-bottom:3px}
+a:hover,a:focus-visible{color:#E2561C;border-color:#E2561C;outline:none}
+</style></head>
+<body><main>
+<h1 id="t">Works</h1>
+<p>this drawer is still being filled</p>
+<a href="index.html">back to the pack</a>
+</main>
+<script>
+const N={photoshop:"Photoshop",illustrator:"Illustrator",indesign:"InDesign",figma:"Figma",fusion:"Fusion"};
+const p=new URLSearchParams(location.search).get("p");
+if(N[p]){document.getElementById("t").textContent=N[p];document.title=N[p]+" — Erian"}
+</script></body></html>
