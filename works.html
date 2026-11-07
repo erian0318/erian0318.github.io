@@ -1,27 +1,95 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Works — Erian</title>
 <style>
 @font-face{font-family:"Plex";src:url(fonts/ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
 @font-face{font-family:"Fell";src:url(fonts/im-fell-english-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--ash:#CFCBC0;--smoke:#7C7E7A;--ember:#E2561C}
 *{box-sizing:border-box;margin:0}
-body{min-height:100vh;background:#0E0F10 url(assets/table.jpg) center/cover fixed;color:#CFCBC0;font-family:Plex,monospace;
-  display:grid;place-items:center;text-align:center;padding:24px}
-body::before{content:"";position:fixed;inset:0;background:rgba(5,6,6,.82)}
-main{position:relative}
-h1{font:400 clamp(34px,7vw,64px)/1.1 Fell,Georgia,serif;letter-spacing:.08em;color:#E2561C;text-shadow:0 0 18px rgba(226,86,28,.4)}
-p{margin:18px 0 32px;font-size:13px;letter-spacing:.12em;color:#7C7E7A}
-a{color:#CFCBC0;font-size:13px;letter-spacing:.12em;text-decoration:none;border-bottom:1px solid #7C7E7A;padding-bottom:3px}
-a:hover,a:focus-visible{color:#E2561C;border-color:#E2561C;outline:none}
+body{min-height:100vh;background:#0E0F10;color:var(--ash);font-family:Plex,monospace}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(rgba(5,6,6,.8),rgba(5,6,6,.9)),url(assets/table.jpg) center/cover}
+.top{position:relative;max-width:1200px;display:flex;align-items:flex-start}
+.hand{position:relative;flex:0 0 min(100%,1000px);aspect-ratio:1916/821}
+.hand img{display:block;width:100%;height:100%;filter:brightness(.62) contrast(1.08) saturate(.8)}
+.hand canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.ember{position:absolute;left:51.4%;top:68.8%;width:5%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(circle,rgba(255,170,80,.9),rgba(226,86,28,.45) 35%,transparent 70%);mix-blend-mode:screen;
+  animation:glow 3.4s ease-in-out infinite;transition:opacity .9s ease}
+@keyframes glow{0%,100%{opacity:.75;transform:translate(-50%,-50%) scale(.9)}45%{opacity:1;transform:translate(-50%,-50%) scale(1.15)}}
+.out .ember{opacity:0!important;animation:none}
+h1{position:absolute;left:min(56%,560px);top:min(16%,120px);font:400 clamp(34px,6vw,68px)/1.05 Fell,Georgia,serif;letter-spacing:.07em;color:var(--ash);text-shadow:0 2px 20px #000}
+h1 small{display:block;margin-top:14px;font:400 12px/1.4 Plex,monospace;letter-spacing:.14em;color:var(--smoke)}
+.grid{max-width:1100px;margin:0 auto;padding:clamp(24px,5vw,70px) clamp(20px,5vw,60px) 140px;
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:clamp(28px,4vw,56px)}
+.print{background:#17191a;border:1px solid #2a2d2f;aspect-ratio:4/5;display:grid;place-items:center;position:relative;
+  box-shadow:0 14px 30px rgba(0,0,0,.65),inset 0 0 40px rgba(0,0,0,.4);transform:rotate(var(--r,0deg));transition:transform .7s cubic-bezier(.22,.7,.2,1)}
+.print:nth-child(3n+1){--r:-1.6deg}.print:nth-child(3n+2){--r:1.1deg;margin-top:22px}.print:nth-child(3n){--r:-.5deg}
+.print:hover{transform:rotate(0) scale(1.02)}
+.print img{width:100%;height:100%;object-fit:cover;display:block}
+.print span{font-size:11px;letter-spacing:.14em;color:var(--smoke)}
+.print figcaption{position:absolute;left:0;right:0;bottom:-26px;font-size:11px;letter-spacing:.1em;color:var(--smoke)}
+.exit{position:fixed;right:max(14px,env(safe-area-inset-right));top:50%;transform:translateY(-50%);z-index:5;
+  writing-mode:vertical-rl;display:flex;align-items:center;gap:14px;color:var(--ash);text-decoration:none;
+  font:400 17px/1 Fell,Georgia,serif;letter-spacing:.2em;padding:18px 10px;opacity:.75;transition:opacity .5s,color .5s}
+.exit i{width:7px;height:7px;border-radius:50%;background:var(--ember);box-shadow:0 0 10px var(--ember);transition:all .8s}
+.exit:hover,.exit:focus-visible{opacity:1;color:var(--ember);outline:none}
+.out .exit i{background:#444;box-shadow:none}
+.grain{position:fixed;inset:-50%;pointer-events:none;z-index:9;opacity:.07;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");animation:gr 1s steps(4) infinite}
+@keyframes gr{25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}}
+@media (max-width:700px){.top{display:block}.hand{flex-basis:auto;width:130%;margin-left:-18%}
+  h1{position:static;padding:8px 22px 0}}
+@media (prefers-reduced-motion:reduce){.ember,.grain{animation:none}}
 </style></head>
-<body><main>
-<h1 id="t">Works</h1>
-<p>this drawer is still being filled</p>
-<a href="index.html">back to the pack</a>
-</main>
+<body>
+<header class="top" id="top">
+  <div class="hand">
+    <img src="assets/hand.webp" alt="A hand holding a smoldering cigarette">
+    <canvas id="smoke"></canvas><div class="ember"></div>
+  </div>
+  <h1 id="t">Works<small id="sub">selected pieces</small></h1>
+</header>
+<main class="grid" id="grid"></main>
+<a class="exit" id="exit" href="index.html"><i></i>I'm done — put it out</a>
+<div class="grain"></div>
 <script>
-const N={photoshop:"Photoshop",illustrator:"Illustrator",indesign:"InDesign",figma:"Figma",fusion:"Fusion"};
+const NAMES={photoshop:"Photoshop",illustrator:"Illustrator",indesign:"InDesign",figma:"Figma",fusion:"Fusion"};
+// Add your pieces here, e.g. photoshop:[{src:"works/ps/poster-01.webp",title:"Poster, 2026"}]
+const WORKS={photoshop:[],illustrator:[],indesign:[],figma:[],fusion:[]};
 const p=new URLSearchParams(location.search).get("p");
-if(N[p]){document.getElementById("t").textContent=N[p];document.title=N[p]+" — Erian"}
+if(NAMES[p]){document.getElementById("t").firstChild.textContent=NAMES[p];document.title=NAMES[p]+" — Erian"}
+const list=WORKS[p]||[];const grid=document.getElementById("grid");
+(list.length?list:Array.from({length:6},()=>null)).forEach((w,i)=>{
+  const f=document.createElement("figure");f.className="print";
+  f.innerHTML=w?`<img src="${w.src}" alt="${w.title||""}" loading="lazy"><figcaption>${w.title||""}</figcaption>`:`<span>empty sleeve</span>`;
+  grid.appendChild(f)});
+
+// smoke
+const cv=document.getElementById("smoke"),cx=cv.getContext("2d"),reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+let W,H,dpr,parts=[],last=0,spawn=0,out=false,puff=0;
+function size(){dpr=Math.min(devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;cx.setTransform(dpr,0,0,dpr,0,0)}
+addEventListener("resize",size);size();
+function add(big){const ex=W*.512,ey=H*.685;
+  parts.push({x:ex+(Math.random()-.5)*4,y:ey,vx:.1+Math.random()*.18,vy:.22+Math.random()*.16,r:W*.004,g:W*(.025+Math.random()*.02)/1000*60,
+    a:big?.22:.11+Math.random()*.06,age:0,life:5200+Math.random()*2500,ph:Math.random()*6.3})}
+function tick(t){const dt=Math.min(t-last,50);last=t;
+  if(!out&&!reduce){spawn+=dt;if(spawn>120){spawn=0;add(false)}}
+  if(puff>0&&!reduce){puff--;add(true)}
+  cx.clearRect(0,0,W,H);
+  parts=parts.filter(q=>q.age<q.life);
+  for(const q of parts){q.age+=dt;const k=q.age/q.life;
+    q.x+=(q.vx+Math.sin(q.age/700+q.ph)*.12*(.4+k))*dt/16;q.y-=q.vy*dt/16*(1-k*.5);
+    const r=q.r+q.g*k*W*.0009*60;const al=q.a*Math.sin(Math.PI*Math.min(k*1.15,1))*(1-k*.4);
+    const g=cx.createRadialGradient(q.x,q.y,0,q.x,q.y,r);
+    g.addColorStop(0,`rgba(205,203,196,${al})`);g.addColorStop(1,"rgba(205,203,196,0)");
+    cx.fillStyle=g;cx.beginPath();cx.arc(q.x,q.y,r,0,6.3);cx.fill()}
+  requestAnimationFrame(tick)}
+if(!reduce)requestAnimationFrame(tick);
+
+// put it out
+document.getElementById("exit").addEventListener("click",e=>{
+  if(e.metaKey||e.ctrlKey||e.shiftKey)return;e.preventDefault();
+  scrollTo({top:0,behavior:"smooth"});out=true;document.body.classList.add("out");puff=6;
+  setTimeout(()=>location.href="index.html",reduce?50:1500)});
 </script></body></html>
